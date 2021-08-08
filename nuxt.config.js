@@ -19,6 +19,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~plugins/vue-chart.js', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -50,5 +51,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    babel:{
+      plugins: [
+        // https://github.com/nuxt/nuxt.js/issues/9224#issuecomment-830577523
+        ['@babel/plugin-proposal-private-property-in-object', { loose: true }]
+      ]
+    }
   }
 }
